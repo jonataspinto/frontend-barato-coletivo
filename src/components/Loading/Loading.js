@@ -21,7 +21,7 @@ Loading.propTypes = {
 
 Loading.defaultProps = {
   type: null,
-  color: 'blackFridayBlack',
+  color: 'primary',
   size: 50,
 };
 

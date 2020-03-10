@@ -4,14 +4,14 @@ const api = axios.create({
   baseURL: 'https://playground.barato.com.br/desafio-front/api',
 });
 
-const getOffer = (id) => {
+const getOffer = id => {
   const response = api.get(`offer/${id}`);
   return response;
 };
 
 const getAllOffers = async () => {
   const response = await api.get('/offers');
-  const newArr = response.data.map(async (offer) => {
+  const newArr = response.data.map(async offer => {
     const { data } = await getOffer(offer.id);
     const { category } = data;
     const item = { ...offer, category };
@@ -21,7 +21,4 @@ const getAllOffers = async () => {
   return Promise.all(newArr);
 };
 
-export {
-  getAllOffers,
-  getOffer,
-};
+export { getAllOffers, getOffer };

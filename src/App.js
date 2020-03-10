@@ -1,22 +1,22 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import Routes from './routes';
-import { GlobalStyles } from './styles/themes/global';
-import usePersistedThemeState from './utils/usePersistedThemeState';
-import light from './styles/themes/light';
-import dark from './styles/themes/dark';
+import Routes from './containers/routes';
+import { GlobalStyles, usePersistedThemeState, ThemeContext } from './styles';
+import themes from './styles/themes';
 
 export default function App() {
-  const [theme, setTheme] = usePersistedThemeState('theme', light);
+  const [theme, setTheme] = usePersistedThemeState('theme', 'dark');
 
   const toggleTheme = () => {
-    setTheme(theme.title === 'light' ? dark : light);
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Routes />
-    </ThemeProvider>
+    <ThemeContext.Provider value={toggleTheme}>
+      <ThemeProvider theme={themes[theme]}>
+        <GlobalStyles />
+        <Routes />
+      </ThemeProvider>
+    </ThemeContext.Provider>
   );
 }

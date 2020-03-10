@@ -3,7 +3,7 @@ import media from 'styled-media-query';
 
 const currentPage = {
   home: css`
-  ${media.greaterThan('large')`
+    ${media.greaterThan('large')`
     padding: 20px 100px;
   `}
     display: grid;
@@ -14,7 +14,7 @@ const currentPage = {
   `,
 
   offer: css`
-  ${media.greaterThan('large')`
+    ${media.greaterThan('large')`
     padding: 20px 100px;
   `}
     display: grid;
@@ -30,10 +30,10 @@ export const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: black;
+  /* background-color: black; */
 `;
 
-export const Main = styled.div`  
+export const Main = styled.div`
   flex: 1;
-  ${(props) => currentPage[props.currentPage]}
+  ${props => currentPage[props.currentPage]}
 `;

@@ -8,7 +8,7 @@ const Box = ({ children }) => {
 
   return (
     <S.BoxContainer currentPage={pathname.split('/')[1].split('/')[0]}>
-      { children }
+      {children}
     </S.BoxContainer>
   );
 };

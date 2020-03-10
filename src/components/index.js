@@ -6,6 +6,7 @@ import Typography from './Typography';
 import Icon from './Icon';
 import Layout from './Layout';
 import Card from './Card';
+import Loading from './Loading';
 
 export {
   /* PLOP_INJECT_EXPORT */
@@ -15,5 +16,6 @@ export {
   Typography,
   Icon,
   Layout,
+  Loading,
   Card,
 };
