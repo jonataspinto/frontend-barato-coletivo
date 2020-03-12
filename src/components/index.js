@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import Switch from './Switch';
 import Box from './Box';
 import Header from './Header';
 import Button from './Button';
@@ -10,6 +11,7 @@ import Loading from './Loading';
 
 export {
   /* PLOP_INJECT_EXPORT */
+  Switch,
   Box,
   Header,
   Button,

@@ -1,5 +1,5 @@
-import ThemeContext from './themeContext';
-import usePersistedThemeState from './usePersistedThemeState';
-import GlobalStyles from './global';
+import addThemeProvider, { ThemeContext } from './addThemeProvider';
 
-export { ThemeContext, usePersistedThemeState, GlobalStyles };
+export { ThemeContext };
+
+export default addThemeProvider;
