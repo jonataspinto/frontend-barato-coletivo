@@ -9,16 +9,25 @@ const getOffer = id => {
   return response;
 };
 
+const categories = [];
+
 const getAllOffers = async () => {
   const response = await api.get('/offers');
   const newArr = response.data.map(async offer => {
     const { data } = await getOffer(offer.id);
+
+    if (!categories.includes(data.category)) {
+      categories.push(data.category);
+    }
+
     const { category } = data;
     const item = { ...offer, category };
+
     return item;
   });
 
-  return Promise.all(newArr);
+  const data = await Promise.all(newArr);
+  return { data, categories };
 };
 
 export { getAllOffers, getOffer };
