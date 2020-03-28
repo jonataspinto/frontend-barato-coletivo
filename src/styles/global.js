@@ -12,6 +12,10 @@ const GlobalStyles = createGlobalStyle`
     color: ${props => props.theme.colors.text};
     font-family: sans-serif;
   }
+
+  a{
+    text-decoration: none;
+  }
 `;
 
 export default GlobalStyles;
