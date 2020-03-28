@@ -13,6 +13,12 @@ const currentPage = {
     margin: 0 auto;
   `}
 
+  ${media.between('1001px', '1250px')`
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 auto;
+    gap: 30px;
+  `}
+
   ${media.greaterThan('1001px')`
     /* gap: 30px; */
 
@@ -24,8 +30,11 @@ const currentPage = {
   `,
 };
 
+const BoxWrapper = styled.div``;
+
 const BoxContainer = styled.div`
-  ${props => currentPage[props.currentPage]}
+  ${props => currentPage[props.currentPage]};
+  padding: 10px 0px 20px 0;
 `;
 
-export { BoxContainer };
+export { BoxWrapper, BoxContainer };

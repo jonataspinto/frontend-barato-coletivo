@@ -1,20 +1,29 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { node, string } from 'prop-types';
 import * as S from './BoxStyled';
+import Typography from '../elements/Typography';
 
-const Box = ({ children }) => {
+const Box = ({ children, category }) => {
   const { pathname } = useLocation();
 
   return (
-    <S.BoxContainer currentPage={pathname.split('/')[1].split('/')[0]}>
-      {children}
-    </S.BoxContainer>
+    <S.BoxWrapper>
+      {category && (
+        <Typography type="header" weight={800}>
+          {category}
+        </Typography>
+      )}
+      <S.BoxContainer currentPage={pathname.split('/')[1].split('/')[0]}>
+        {children}
+      </S.BoxContainer>
+    </S.BoxWrapper>
   );
 };
 
 Box.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: node.isRequired,
+  category: string,
 };
 
 export default Box;
