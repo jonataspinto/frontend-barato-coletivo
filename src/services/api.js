@@ -4,8 +4,8 @@ const api = axios.create({
   baseURL: 'https://playground.barato.com.br/desafio-front/api',
 });
 
-const getOffer = id => {
-  const response = api.get(`offer/${id}`);
+const getOffer = async id => {
+  const response = await api.get(`offer/${id}`);
   return response;
 };
 

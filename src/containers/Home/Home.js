@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { getAll, getUniqueOffer } from '../../store/offers/offers.actions';
+
 import * as S from './Style';
 import { Card, Loading, Image, Button } from '../../components/elements';
 import { Box } from '../../components';
-import * as api from '../../services/api';
 
 const style = {
   title: {
@@ -15,19 +18,15 @@ const style = {
 };
 
 const Home = () => {
-  const [allOffers, setAllOffers] = useState([]);
-  const [allCategory, setAllCategory] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { offers, categories, loading } = useSelector(state => state.data);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    async function getAll() {
-      const { data, categories } = await api.getAllOffers();
-      setAllOffers(data);
-      setAllCategory(categories);
-      setLoading(i => !i);
+    async function getOffers() {
+      dispatch(getAll());
     }
-    getAll();
-  }, []);
+    if (offers.length <= 1) getOffers();
+  }, [dispatch]);
 
   const HomeSection = (title, price) => (
     <span style={{ display: 'block', padding: '10px' }}>
@@ -37,9 +36,9 @@ const Home = () => {
   );
 
   const RenderBoxers = () =>
-    allCategory.map(category => (
+    categories.map(category => (
       <Box category={category} key={category}>
-        {allOffers.map(
+        {offers.map(
           offer =>
             offer.category === category && (
               <Card
@@ -51,7 +50,10 @@ const Home = () => {
                 <Image imgSrc={offer.image.url} alt={offer.id} width={250} />
                 {HomeSection(offer.title, offer.price)}
                 <Link to={`/offer/${offer.id}`}>
-                  <Button value="Ver Mais" handleClick={() => {}} />
+                  <Button
+                    value="Ver Mais"
+                    handleClick={() => dispatch(getUniqueOffer(offer.id))}
+                  />
                 </Link>
               </Card>
             )
