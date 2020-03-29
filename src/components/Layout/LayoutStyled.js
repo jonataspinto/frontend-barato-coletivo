@@ -22,7 +22,6 @@ const currentPage = {
     gap: 50px;
     padding: 20px 0px;
     margin: 0 auto;
-    background-color: pink;
   `,
 };
 
@@ -30,7 +29,6 @@ export const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* background-color: black; */
 `;
 
 export const Main = styled.div`
